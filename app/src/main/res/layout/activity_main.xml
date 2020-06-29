@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="4dp"
-        android:background="@android:color/darker_gray"
+        android:background="#A37D5C"
         android:scrollbars="vertical"/>
 
 </RelativeLayout>
