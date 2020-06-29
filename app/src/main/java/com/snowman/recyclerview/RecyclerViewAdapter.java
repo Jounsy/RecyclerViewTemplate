@@ -32,8 +32,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewViewHolder holder, int position) {
     RecyclerViewItem recyclerViewItem = arrayList.get(position);
     holder.imageView.setImageResource(recyclerViewItem.getImageRecource());
-    holder.textView1.setText(recyclerViewItem.getText1());
-    holder.textView2.setText(recyclerViewItem.getText2());
+    holder.pizzaNameTextView.setText(recyclerViewItem.getPizzaName());
+    holder.descriptionTextView.setText(recyclerViewItem.getDescription());
     }
 
     @Override
@@ -44,14 +44,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class RecyclerViewViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView imageView;
-        public TextView textView1;
-        public TextView textView2;
+        public TextView pizzaNameTextView;
+        public TextView descriptionTextView;
         public RecyclerViewViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
-            textView1 = itemView.findViewById(R.id.textView1);
-            textView2 = itemView.findViewById(R.id.textView2);
+            pizzaNameTextView = itemView.findViewById(R.id.textView1);
+            descriptionTextView = itemView.findViewById(R.id.textView2);
         }
     }
 }
