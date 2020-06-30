@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<RecyclerViewItem> recyclerViewItems = new ArrayList<>();
+        final ArrayList<RecyclerViewItem> recyclerViewItems = new ArrayList<>();
 
         recyclerViewItems.add(new RecyclerViewItem(R.drawable.pizza,"Pizza","Make your own pizza with a crispy base, mozzarella cheese and a fresh tomato sauce. Add simple toppings like slices of ham and rocket if you like.","https://www.bbcgoodfood.com/recipes/pizza"));
         recyclerViewItems.add(new RecyclerViewItem(R.drawable.kids_pizza,"Toddler recipe: homemade pizza with veggie faces","Here’s a toddler recipe to keep little bellies full and hands busy. They can decorate these pizzas themselves and pack in four of their five-a-day.","https://www.bbcgoodfood.com/recipes/toddler-recipe-easy-homemade-pizza-veggie-faces"));
@@ -45,5 +47,15 @@ public class MainActivity extends AppCompatActivity {
        // GridLayoutManager layoutManager = new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
+
+        //5
+        adapter.setListener(new RecyclerViewAdapter.Listener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(MainActivity.this, PizzaInternetDetail.class);
+                intent.putExtra(PizzaInternetDetail.EXTRA_PIZZA_LINK, recyclerViewItems.get(position).getInternetLink());
+                startActivity(intent);
+            }
+        });
     }
 }
